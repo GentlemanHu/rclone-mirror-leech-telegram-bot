@@ -247,6 +247,10 @@ async def load_config():
      if len(GD_INDEX_URL) == 0:
           GD_INDEX_URL = ''
 
+     ALIST_INDEX_URL = environ.get('ALIST_INDEX_URL', '').rstrip("/")
+     if len(ALIST_INDEX_URL) == 0:
+          ALIST_INDEX_URL = ''
+
      VIEW_LINK = environ.get('VIEW_LINK', '')
      VIEW_LINK = VIEW_LINK.lower() == 'true'
 
@@ -337,7 +341,8 @@ async def load_config():
                          'USER_SESSION_STRING': USER_SESSION_STRING,
                          'USE_SERVICE_ACCOUNTS': USE_SERVICE_ACCOUNTS,
                          'VIEW_LINK': VIEW_LINK,
-                         'WEB_PINCODE': WEB_PINCODE})
+                         'WEB_PINCODE': WEB_PINCODE,
+                         'ALIST_INDEX_URL':ALIST_INDEX_URL})
 
      if DATABASE_URL:
           await DbManager().update_config(config_dict)                        

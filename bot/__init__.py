@@ -197,6 +197,10 @@ GD_INDEX_URL = environ.get('GD_INDEX_URL', '').rstrip("/")
 if len(GD_INDEX_URL) == 0:
     GD_INDEX_URL = ''
 
+ALIST_INDEX_URL = environ.get('ALIST_INDEX_URL', '').rstrip("/")
+if len(ALIST_INDEX_URL) == 0:
+    ALIST_INDEX_URL = ''
+
 VIEW_LINK = environ.get('VIEW_LINK', '')
 VIEW_LINK = VIEW_LINK.lower() == 'true'
 
