@@ -280,11 +280,9 @@ class MirrorLeechListener:
         out, err = await process.communicate()
         url = out.decode().strip()
         return_code = await process.wait()
-        index_url = config_dict['GD_INDEX_URL']
         if return_code == 0:
             button= ButtonMaker()
             button.url_buildbutton("Origin Link 🔗", url)
-            button.url_buildbutton("Index Link 🔗", f'{index_url}/{dest_dir}{origin_dir}')
             await sendMarkup(format_out, self.message, reply_markup= button.build_menu(2))
         else:
             LOGGER.info(err.decode().strip())
@@ -324,13 +322,10 @@ class MirrorLeechListener:
         out, _ = await process.communicate()
         url = out.decode().strip()
         return_code = await process.wait()
-        index_url = config_dict['GD_INDEX_URL']
         if return_code == 0:
             buttons.url_buildbutton("Cloud Link 🔗", url)
             if isGdrive:
                 add_index_link(name, type, buttons)
-            else:
-                buttons.url_buildbutton("Index Link 🔗", f'{index_url}/{base}/{name}')
             await sendMarkup(msg, self.message, buttons.build_menu(2))
         else:
             if isGdrive:
@@ -338,7 +333,6 @@ class MirrorLeechListener:
                 add_index_link(name, type, buttons)
                 await sendMarkup(msg, self.message, buttons.build_menu(2))   
             else:
-                buttons.url_buildbutton("Index Link 🔗", f'{index_url}/{base}/{name}')
                 await sendMarkup(msg, self.message, buttons.build_menu(1))
         if self.__isMultiZip:
             await clean_download(self.multizip_dir)
