@@ -1,0 +1,58 @@
+(N) 2023-04-22T05:17:36 - qBittorrent v4.1.7 started
+(N) 2023-04-22T05:17:36 - qBittorrent v4.1.7 started
+(I) 2023-04-22T05:17:36 - qBittorrent is trying to listen on any interface port: 8999
+(N) 2023-04-22T05:17:36 - Peer ID: -qB4170-
+(N) 2023-04-22T05:17:36 - HTTP User-Agent is 'qBittorrent/4.1.7'
+(I) 2023-04-22T05:17:36 - DHT support [ON]
+(I) 2023-04-22T05:17:36 - Local Peer Discovery support [ON]
+(I) 2023-04-22T05:17:36 - PeX support [ON]
+(I) 2023-04-22T05:17:36 - Anonymous mode [OFF]
+(I) 2023-04-22T05:17:36 - Encryption support [ON]
+(I) 2023-04-22T05:17:36 - Embedded Tracker [OFF]
+(I) 2023-04-22T05:17:36 - UPnP / NAT-PMP support [ON]
+(W) 2023-04-22T05:17:36 - Couldn't load GeoIP database. Reason: No such file or directory
+(N) 2023-04-22T05:17:36 - Using custom Web UI. Location: &quot;/workspaces/rclone-mirror-leech-telegram-bot&quot;.
+(W) 2023-04-22T05:17:36 - Couldn't load Web UI translation for selected locale (C).
+(N) 2023-04-22T05:17:36 - Web UI: Now listening on IP: *, port: 8090
+(I) 2023-04-22T05:17:36 - qBittorrent is successfully listening on interface :: port: TCP/8999
+(I) 2023-04-22T05:17:36 - qBittorrent is successfully listening on interface 0.0.0.0 port: TCP/8999
+(I) 2023-04-22T05:17:36 - qBittorrent is successfully listening on interface 0.0.0.0 port: UDP/8999
+(W) 2023-04-22T05:17:37 - Couldn't download GeoIP database file. Reason: The remote host name was not found (invalid hostname)
+(I) 2023-04-22T05:17:38 - External IP: 4.193.154.191
+(C) 2023-04-22T05:20:12 - UPnP/NAT-PMP: Port mapping failure, message: could not map port using UPnP: no router found
+(C) 2023-04-22T05:20:12 - UPnP/NAT-PMP: Port mapping failure, message: could not map port using UPnP: no router found
+(C) 2023-04-22T05:20:12 - UPnP/NAT-PMP: Port mapping failure, message: could not map port using UPnP: no router found
+(N) 2023-04-22T05:20:16 - qBittorrent v4.1.7 started
+(N) 2023-04-22T05:22:33 - qBittorrent v4.1.7 started
+(N) 2023-04-22T05:23:04 - qBittorrent v4.1.7 started
+(N) 2023-04-22T05:23:35 - qBittorrent v4.1.7 started
+(N) 2023-04-22T05:25:53 - qBittorrent v4.1.7 started
+(I) 2023-04-22T05:26:04 - Python detected, executable name: 'python3', version: 3.10.4
+(N) 2023-04-22T05:29:35 - qBittorrent v4.1.7 started
+(N) 2023-04-22T05:32:08 - qBittorrent v4.1.7 started
+(N) 2023-04-22T05:33:44 - qBittorrent v4.1.7 started
+(N) 2023-04-22T05:40:02 - qBittorrent v4.1.7 started
+(N) 2023-04-22T06:02:29 - qBittorrent v4.1.7 started
+(N) 2023-04-22T06:04:08 - qBittorrent v4.1.7 started
+(N) 2023-04-22T06:06:46 - qBittorrent v4.1.7 started
+(N) 2023-04-22T06:34:31 - qBittorrent v4.1.7 started
+(N) 2023-04-22T06:36:58 - qBittorrent v4.1.7 started
+(N) 2023-04-22T06:39:43 - qBittorrent v4.1.7 started
+(N) 2023-04-22T06:56:02 - qBittorrent v4.1.7 started
+(N) 2023-04-22T06:57:47 - qBittorrent v4.1.7 started
+(N) 2023-04-22T07:18:13 - qBittorrent v4.1.7 started
+(N) 2023-04-22T07:19:24 - qBittorrent v4.1.7 started
+(N) 2023-04-22T07:28:05 - qBittorrent v4.1.7 started
+(N) 2023-04-22T07:29:59 - qBittorrent v4.1.7 started
+(N) 2023-04-22T07:31:03 - qBittorrent v4.1.7 started
+(N) 2023-04-22T07:33:42 - qBittorrent v4.1.7 started
+(N) 2023-04-22T07:34:41 - qBittorrent v4.1.7 started
+(N) 2023-04-22T07:38:38 - qBittorrent v4.1.7 started
+(N) 2023-04-22T07:39:59 - qBittorrent v4.1.7 started
+(N) 2023-04-22T07:50:42 - qBittorrent v4.1.7 started
+(N) 2023-04-22T07:55:23 - qBittorrent v4.1.7 started
+(N) 2023-04-22T07:58:14 - qBittorrent v4.1.7 started
+(N) 2023-04-22T08:04:00 - qBittorrent v4.1.7 started
+(N) 2023-04-22T08:06:44 - qBittorrent v4.1.7 started
+(N) 2023-04-22T10:31:05 - qBittorrent v4.1.7 started
+(N) 2023-04-22T10:31:56 - qBittorrent v4.1.7 started

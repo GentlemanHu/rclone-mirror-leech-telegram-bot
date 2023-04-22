@@ -286,6 +286,8 @@ GDRIVE_FOLDER_ID = environ.get('GDRIVE_FOLDER_ID', '')
 if len(GDRIVE_FOLDER_ID) == 0:
     GDRIVE_FOLDER_ID = ''
 
+FIREFLY_TOKEN = environ.get('FIREFLY_TOKEN', '')
+
 DOWNLOAD_DIR = environ.get('DOWNLOAD_DIR', '')
 if len(DOWNLOAD_DIR) == 0:
     DOWNLOAD_DIR = '/usr/src/app/downloads/'

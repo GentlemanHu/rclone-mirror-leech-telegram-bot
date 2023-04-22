@@ -35,4 +35,4 @@ tgCrypto
 uvloop
 xattr
 yt-dlp
-
+pyfirefly
