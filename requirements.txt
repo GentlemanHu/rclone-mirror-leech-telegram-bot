@@ -36,3 +36,4 @@ uvloop
 xattr
 yt-dlp
 aliyundrive-webdav
+pyfirefly
