@@ -7,7 +7,11 @@ class Menus:
     LEECH= "leechmenu"
     COPY= "copymenu"
     MYFILES= "myfilesmenu"
-    CLOUDSEL= "cloudselectmenu" 
+    STORAGE= 'storagemenu'
+    CLEANUP= 'cleanupmenu'
+    SYNC= 'syncmenu'
+    MIRRORSELECT= 'mirrorselectmenu'
+    CLOUDSELECT= "cloudselectmenu" 
 
 def rcloneListNextPage(list_info, offset= 0, max_results=10):
     start = offset
@@ -30,6 +34,6 @@ def rcloneListButtonMaker(result_list, buttons, menu_type, dir_callback, file_ca
         size= get_readable_file_size(dir['Size'])
 
         if dir['MimeType'] == 'inode/directory': 
-            buttons.cb_buildbutton(f"📁 {path}", data= f"{menu_type}^{dir_callback}^{index}^{user_id}") 
+            buttons.cb_buildbutton(f"📁{path}", data= f"{menu_type}^{dir_callback}^{index}^{user_id}") 
         else:
             buttons.cb_buildbutton(f"[{size}] {path}", data= f"{menu_type}^{file_callback}^{index}^True^{user_id}")

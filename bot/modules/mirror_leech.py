@@ -17,7 +17,7 @@ from bot.helper.ext_utils.message_utils import deleteMessage, sendMarkup, sendMe
 from bot.helper.ext_utils.button_build import ButtonMaker
 from bot.helper.ext_utils.misc_utils import get_readable_size
 from bot.helper.ext_utils.rclone_data_holder import get_rclone_data, update_rclone_data
-from bot.helper.ext_utils.rclone_utils import is_rclone_config, is_remote_selected, list_remotes_ml
+from bot.helper.ext_utils.rclone_utils import is_rclone_config, is_remote_selected, list_remotes
 from bot.helper.mirror_leech_utils.download_utils.aria2_download import add_aria2c_download
 from bot.helper.mirror_leech_utils.download_utils.gd_downloader import add_gd_download
 from bot.helper.mirror_leech_utils.download_utils.mega_download import add_mega_download
@@ -173,23 +173,23 @@ Number should be always before | zipname
              '''
         else:
              help_msg = '''         
-<code>/cmd</code> link |newname pswd: xx(zip/unzip)
+1. <code>/mirror</code> link |newname pswd: xx(zip/unzip)
 
-<b>By replying</b>   
-<code>/cmd</code> |newname pswd: xx(zip/unzip)
+2. <b>Replying to link/file</b>   
+<code>/mirror</code> |newname pswd: xx(zip/unzip)
 
-<b>Direct link authorization:</b>
-<code>/cmd</code> link |newname pswd: xx(zip/unzip)
+3. <b>Direct link authorization:</b>
+<code>/mirror</code> link |newname pswd: xx(zip/unzip)
 <b>username</b>
 <b>password</b>
 
-<b>qBittorrent Selection</b>    
-<code>/cmd</code> <b>s</b> link or by replying to link
+4. <b>Bittorrent selection</b>    
+<code>/mirror</code> <b>s</b> link or by replying to link
 
-<b>Multi links by replying to first link/file:</b>
-<code>/cmd</code> 5(number of links/files)
+5. <b>Multi links by replying to first link/file:</b>
+<code>/mirror</code> 5(number of links/files)
 Number should be always before |newname or pswd:
-                '''
+'''
         return await sendMessage(help_msg, message)
 
     listener= MirrorLeechListener(message, tag, user_id, isZip=isZip, extract=extract, pswd=pswd, select=select, isLeech=isLeech)
@@ -265,8 +265,6 @@ async def mirror_menu(client, query):
     file = info[1]
     message= info[2]
     is_Leech= info[3]
-    rclone_remote = get_rclone_data("CLOUDSEL_REMOTE", user_id)
-    base_dir= get_rclone_data("CLOUDSEL_BASE_DIR", user_id)
 
     if int(info[-1]) != user_id:
         await query.answer("This menu is not for you!", show_alert=True)
@@ -275,7 +273,7 @@ async def mirror_menu(client, query):
         await query_message.delete()
         if config_dict['REMOTE_SELECTION'] and not is_Leech:
             update_rclone_data('NAME', "", user_id) 
-            await list_remotes_ml(message, rclone_remote, base_dir, "mirrorselect")    
+            await list_remotes(message, menu_type="mirrorselectmenu")    
         else:
             tg_down= TelegramDownloader(file, client, listener, f'{DOWNLOAD_DIR}{listener.uid}/', "")
             if PARALLEL_TASKS:    
@@ -299,7 +297,7 @@ async def mirror_menu(client, query):
                     name = response.text.strip()
                     if config_dict['REMOTE_SELECTION'] and not is_Leech:
                         update_rclone_data('NAME', name, user_id) 
-                        await list_remotes_ml(message, rclone_remote, base_dir, "mirrorselect")   
+                        await list_remotes(message, menu_type="mirrorselectmenu")   
                     else:
                         tg_down= TelegramDownloader(file, client, listener, f'{DOWNLOAD_DIR}{listener.uid}/', name)
                         if PARALLEL_TASKS:    
@@ -329,8 +327,8 @@ async def mirror_select(client, callback_query):
         return
     elif cmd[1] == "remote":
         await deleteMessage(message) 
-        update_rclone_data("CLOUDSEL_BASE_DIR", "/", user_id)
-        update_rclone_data("CLOUDSEL_REMOTE", cmd[2], user_id)
+        update_rclone_data("CLOUD_SELECT_BASE_DIR", "", user_id)
+        update_rclone_data("CLOUD_SELECT_REMOTE", cmd[2], user_id)
         if user_id == OWNER_ID:
             config_dict.update({'DEFAULT_OWNER_REMOTE': cmd[2]}) 
         name= get_rclone_data("NAME", user_id)
@@ -370,9 +368,9 @@ async def worker(queue: Queue):
         
 # Create worker tasks to process the queue concurrently.        
 if PARALLEL_TASKS:
-    LOGGER.info("Creating worker tasks")
+    LOGGER.info("Creating parallel tasks")
     for i in range(PARALLEL_TASKS):
-        task = botloop.create_task(worker(m_queue))
+        run_async_task(worker, m_queue)
 
 mirror_handler = MessageHandler(handle_mirror,filters=filters.command(BotCommands.MirrorCommand) & (CustomFilters.user_filter | CustomFilters.chat_filter))
 zip_mirror_handler = MessageHandler(handle_zip_mirror,filters=filters.command(BotCommands.ZipMirrorCommand) & (CustomFilters.user_filter | CustomFilters.chat_filter))
@@ -380,7 +378,7 @@ unzip_mirror_handler = MessageHandler(handle_unzip_mirror,filters=filters.comman
 multizip_mirror_handler = MessageHandler(handle_multizip_mirror, filters=filters.command(BotCommands.MultiZipMirrorCommand) & (CustomFilters.user_filter | CustomFilters.chat_filter))
 auto_mirror_handler = MessageHandler(handle_auto_mirror, filters= filters.video | filters.document | filters.audio | filters.photo)
 mirror_menu_cb = CallbackQueryHandler(mirror_menu, filters=filters.regex("mirrormenu"))
-mirror_select_cb = CallbackQueryHandler(mirror_select, filters=filters.regex("mirrorselect"))
+mirror_select_cb = CallbackQueryHandler(mirror_select, filters=filters.regex("mirrorselectmenu"))
 
 if config_dict['AUTO_MIRROR']:
     bot.add_handler(auto_mirror_handler)
